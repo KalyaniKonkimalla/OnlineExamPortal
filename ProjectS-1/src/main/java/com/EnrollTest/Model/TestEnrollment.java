@@ -22,6 +22,12 @@ public class TestEnrollment {
 
 	@Column(name="Status",length=3)
 	private String statusCheck;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
+	@JsonBackReference
+	private User user;
+
 		
 	public Integer getTestid() {
 		return testid;
@@ -42,9 +48,18 @@ public class TestEnrollment {
 	public void setStatusCheck(String statusCheck) {
 		this.statusCheck = statusCheck;
 	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
-		return "TestEnrollment [testid=" + testid + ", courseType=" + courseType + ", statusCheck=" + statusCheck + "]";
+		return "TestEnrollment [testid=" + testid + ", courseType=" + courseType + ", statusCheck=" + statusCheck + "", user=" + user + "]";
 	}
 	
 
